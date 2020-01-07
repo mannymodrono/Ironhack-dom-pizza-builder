@@ -1,6 +1,8 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants 
+let total = 0;
+
 var basePrice = 10
 var ingredients = {
   pepperonni: {name: 'Pepperonni', price: 1},
@@ -101,6 +103,8 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let total1 = basePrice + total;
+  document.getElementById('total').innerHTML = '$' + total1;
 }
 
 
@@ -181,26 +185,56 @@ function crustclick () {
 }
 
 function pepButton () {
-  if (pepclick === true) {document.querySelector('.btn.btn-pepperonni').classList.add('active')}
-  else {document.querySelector('.btn.btn-pepperonni').classList.remove('active')}
+  if (state.pepperonni === true) {
+    document.querySelector('.btn.btn-pepperonni').classList.add('active');
+    total =+ ingredients.pepperonni.price;
+  }
+  else {
+    document.querySelector('.btn.btn-pepperonni').classList.remove('active');
+    total =- ingredients.pepperonni.price;
+  }
 }
 
 function mushButton () {
-  if (document.querySelector('.btn.btn-mushrooms').onclick === true) {document.querySelector('.btn.btn-mushrooms').classList.add('active')}
-  else {document.querySelector('.btn.btn-mushrooms').classList.remove('active')}
+  if (state.mushrooms === true) {
+    document.querySelector('.btn.btn-mushrooms').classList.add('active');
+    total =+ ingredients.mushrooms.price;
+  }
+  else {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+    total =- ingredients.mushrooms.price;
+  }
 }
 
 function greenButton () {
-  if (document.querySelector('.btn.btn-green-peppers').onclick === true) {document.querySelector('.btn.btn-green-peppers').classList.add('active')}
-  else {document.querySelector('.btn.btn-green-peppers').classList.remove('active')}
+  if (state.greenPeppers === true) {
+    document.querySelector('.btn.btn-green-peppers').classList.add('active');
+    total += ingredients.greenPeppers.price;
+  }
+  else {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+    total -= ingredients.greenPeppers.price;
+  }
 }
 
 function whiteButton () {
-  if (document.querySelector('.btn.btn-sauce').onclick === true) {document.querySelector('.btn.btn-sauce').classList.add('active')}
-  else {document.querySelector('.btn.btn-sauce').classList.remove('active')}
+  if (state.whiteSauce === true) {
+    document.querySelector('.btn.btn-sauce').classList.add('active');
+    total += ingredients.whiteSauce.price;
+  }
+  else {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+    // total -= ingredients.whiteSauce.price;
+  }
 }
 
 function crustButton () {
-  if (document.querySelector('.btn.btn-crust').onclick === true) {document.querySelector('.btn.btn-crust').classList.add('active')}
-  else {document.querySelector('.btn.btn-crust').classList.remove('active')}
+  if (state.glutenFreeCrust === true) {
+    document.querySelector('.btn.btn-crust').classList.add('active');
+    total += ingredients.glutenFreeCrust.price;
+  }
+  else {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+    // total -= ingredients.glutenFreeCrust.price;
+  }
 }
